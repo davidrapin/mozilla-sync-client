@@ -4,12 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <name>Moz Sync</name>
-    <description>Mozilla Sync Java client</description>
+    <name>MozillaSyncClient</name>
+    <description>Java Mozilla Sync client</description>
     <packaging>jar</packaging>
+    <url>http://github.com/davidrapin/mozilla-sync-client</url>
 
     <groupId>com.soda</groupId>
-    <artifactId>mozsync</artifactId>
+    <artifactId>mozilla-sync-client</artifactId>
     <version>1.1</version>
 
     <dependencies>
