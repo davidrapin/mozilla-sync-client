@@ -1,0 +1,1 @@
+http://docs.services.mozilla.com/sync/objectformats.html#sync-objectformats

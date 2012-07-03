@@ -9,11 +9,13 @@
     <packaging>jar</packaging>
     <url>http://github.com/davidrapin/mozilla-sync-client</url>
 
-    <groupId>com.soda</groupId>
+    <groupId>cx.david</groupId>
     <artifactId>mozilla-sync-client</artifactId>
     <version>1.1</version>
 
     <dependencies>
+
+        <!-- http client -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
@@ -25,10 +27,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- encoding -->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.5</version>
         </dependency>
+
+        <!-- json -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+
     </dependencies>
 </project>
