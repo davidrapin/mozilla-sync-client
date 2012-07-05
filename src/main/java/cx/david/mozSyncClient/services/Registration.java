@@ -16,10 +16,11 @@ import java.io.UnsupportedEncodingException;
  */
 public class Registration
 {
-    public static final String VERSION = "1.0";
+    public static final String REG_SERVER_PATH = "user";
+    public static final String REG_SERVER_VERSION = "1.0";
+    public static final String REG_SERVER_SUFFIX_NODE = "node/weave";
 
     private final HttpClient client;
-
 
     public Registration(String server)
     {
@@ -28,15 +29,20 @@ public class Registration
 
     public boolean userExists(String username) throws Exception
     {
-        String uri = "/user/" + VERSION + "/" + getWeaveID(username);
-        String response = client.getBody(uri);
-        return "1".equals(response);
+        String uri = makeURI(username, null);
+        return "1".equals(client.getBody(uri));
     }
 
     public String getWeaveNode(String username) throws IOException, HttpException
     {
-        String uri = "/user/" + VERSION + "/" + getWeaveID(username) + "/node/weave";
+        String uri = makeURI(username, REG_SERVER_SUFFIX_NODE);
         return client.getBody(uri);
+    }
+
+    private String makeURI(String username, String suffix)
+    {
+        return "/" + REG_SERVER_PATH + "/" + REG_SERVER_VERSION + "/"
+               + getWeaveID(username) + (suffix == null ? "" : "/" + suffix);
     }
 
 

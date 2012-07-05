@@ -42,6 +42,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.AlgorithmParameterSpec;
 import java.util.Arrays;
 
 import javax.crypto.BadPaddingException;
@@ -132,7 +133,8 @@ public class Cryptographer
         {
             byte[] encryptionKey = info.getKeys().getEncryptionKey();
             SecretKeySpec spec = new SecretKeySpec(encryptionKey, KEY_ALGORITHM_SPEC);
-            cipher.init(Cipher.DECRYPT_MODE, spec, new IvParameterSpec(info.getIV()));
+            AlgorithmParameterSpec ivParamSpec = new IvParameterSpec(info.getIV());
+            cipher.init(Cipher.DECRYPT_MODE, spec, ivParamSpec);
         }
         catch (GeneralSecurityException ex)
         {

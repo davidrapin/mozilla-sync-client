@@ -139,7 +139,7 @@ public class Utils
     {
         Base32 converter = new Base32();
         return converter.decode(
-            base32.replace('8', 'l').replace('9', 'o').toUpperCase()
+            base32.replace('8', 'l').replace('9', 'o').replaceAll("-", "").toUpperCase()
         );
     }
 

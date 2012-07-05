@@ -1,9 +1,9 @@
 package cx.david.mozSyncClient;
 
-import cx.david.mozSyncClient.services.Auth;
-import cx.david.mozSyncClient.services.Registration;
+import cx.david.mozSyncClient.services.Storage;
 
-import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author @davidrapin
@@ -12,24 +12,25 @@ public class Main
 {
     public static void main(String[] args) throws Exception
     {
-        //test();
+
     }
 
-    private static void test(String username, String password) throws Exception
+    private static void testConnect(String username, String password, String base32SyncKey) throws Exception
     {
-        // USER API
-        Registration rs = new Registration("auth.services.mozilla.com");
-        System.out.println(username + " exists : " + rs.userExists(username));
-        URL node = new URL(rs.getWeaveNode(username));
-        System.out.println(username + " weave node : " + node.getHost());
-        Auth au = new Auth(node.getHost());
-        System.out.println(au.simpleAuth(username, password));
+        Storage sto = new Storage(username, password, base32SyncKey);
 
+        List<Object> bks = sto.getCollection("bookmarks");
+        System.out.println(Storage.json_encode(bks));
+
+        Map<String, Object> bk = sto.getCollectionWBO("bookmarks", bks.get(bks.size() - 1) + "");
+        System.out.println(Storage.json_encode(bk));
+        System.out.println(":)");
+
+//        System.out.println(au.getCollectionsInfo());
+//        System.out.println(au.getCollectionCounts());
+//        System.out.println(au.getCollectionUsage());
 
     }
-
-
-
 
 
 }

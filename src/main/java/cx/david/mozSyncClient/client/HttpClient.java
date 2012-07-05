@@ -37,7 +37,7 @@ public class HttpClient
         return get(uri, new Header[]{});
     }
 
-    private HttpResponse get(String uri, Header... headers) throws IOException, HttpException
+    public HttpResponse get(String uri, Header... headers) throws IOException, HttpException
     {
         try
         {
@@ -45,7 +45,7 @@ public class HttpClient
             if (headers != null && headers.length > 0) {
                 for (Header h : headers) get.setHeader(h);
             }
-            System.out.println("-->" + get.getRequestLine().toString());
+            System.out.println(" " + get.getMethod() + " [" + host.toString() + "/" + get.getRequestLine().getUri() + "]");
             return client.execute(host, get);
         }
         catch (URISyntaxException e)

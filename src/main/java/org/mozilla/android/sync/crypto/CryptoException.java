@@ -4,12 +4,12 @@ import java.security.GeneralSecurityException;
 
 public class CryptoException extends Exception
 {
-    public GeneralSecurityException cause;
+    //public GeneralSecurityException cause;
 
     public CryptoException(GeneralSecurityException e)
     {
-        this();
-        this.cause = e;
+        super(e);
+        //this.cause = e;
     }
 
     public CryptoException()
